@@ -14,7 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configDarkMode()
         return true
+    }
+    
+    func configDarkMode() {
+        let flag = UITraitCollection.current.userInterfaceStyle == .dark
+        APODColor.sharedInstance.isDarkMode = flag
+        UITabBar.appearance().tintColor = APODColor.sharedInstance.barItemColor
+        UITabBar.appearance().unselectedItemTintColor = APODColor.sharedInstance.unSelectedBarItemColor
     }
 
     // MARK: UISceneSession Lifecycle
